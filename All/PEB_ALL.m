@@ -45,7 +45,7 @@ SubjHungerC = SubjHunger - mean(SubjHunger);
 BMIxHunger = BMIC .* Condition;
 
 % Define design matric
-M.X = [ones(N,1) Condition BMIC BloodC];
+M.X = [ones(N,1) Condition BMIC BloodC]; % Model 3
 
 % Choose field
 field = {'A'};
@@ -57,14 +57,13 @@ BMA = spm_dcm_peb_bmc(PEB); % search over nested models
 
 spm_dcm_peb_review(BMA,GCM); % review results
 
-save('Model_BMI_Condition_BloodC');
+save('Model_BMI_Condition_BloodC'); % Model 3 
 
 % % Perform leave-one-out cross validation (GCM,M,field are as before)
 spm_dcm_loo(GCM,M,field);
 
 save('Model3');
 
-%% Plotting stuff after
 spm_dcm_fmri_check();
 spm_dcm_fmri_csd_results();
 
