@@ -68,25 +68,23 @@ save('Model3');
 spm_dcm_fmri_check();
 spm_dcm_fmri_csd_results();
 
-% first level plots / checks
-% 2nd level plots
-n = 4; % number of regions
-Ep = PEB.Ep(:,2); % using the second covariate
-Vp = diag(PEB.Cp(1:n*n,1:n*n));
+%% first level plots / checks
+%% 2nd level plots
+%n = 4; % number of regions
+%Ep = PEB.Ep(:,2); % using the second covariate
+%Vp = diag(PEB.Cp(1:n*n,1:n*n));
 
-figure;
-spm_plot_ci(Ep,Vp);
+%figure;
+%spm_plot_ci(Ep,Vp);
 
-% If you want to calculate the postrerior probabilities then you can simply type
+%% calculate the postrerior probabilities 
 
-Pp = 1 - spm_Ncdf(0,abs(Ep),Vp); % Ep and Vp from above
+%Pp = 1 - spm_Ncdf(0,abs(Ep),Vp); % Ep and Vp from above
 
-%which will give you probabilities for exampe 0.96 is equal to 96% probability (or confidence) that that connection was larger than zero.
+%%calculate the 90% credible intervals
 
-%If you want to calculate the 90% credible intervals then type
-
-ci = spm_invNcdf(0.95,Ep,Vp);
-upper = Ep + ci;
-lower = Ep - ci;
+%ci = spm_invNcdf(0.95,Ep,Vp);
+%upper = Ep + ci;
+%lower = Ep - ci;
 
 
